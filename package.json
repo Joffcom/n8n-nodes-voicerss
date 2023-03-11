@@ -30,7 +30,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/VoiceRSS.credentials.js"
+      "dist/credentials/VoiceRSSApi.credentials.js"
     ],
     "nodes": [
       "dist/nodes/VoiceRSS/VoiceRSS.node.js"

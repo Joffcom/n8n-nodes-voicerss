@@ -13,6 +13,9 @@ export class VoiceRSSApi implements ICredentialType {
 			displayName: 'API Key',
 			name: 'key',
 			type: 'string',
+			typeOptions: {
+				password: true,
+			},
 			default: '',
 		},
 	];
@@ -21,8 +24,8 @@ export class VoiceRSSApi implements ICredentialType {
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
-			query: {
-				key: '={{$credentials.key}}',
+			qs: {
+				key: '={{ $credentials.key }}',
 			},
 		},
 	};
