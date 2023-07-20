@@ -20,7 +20,6 @@ export class VoiceRSSApi implements ICredentialType {
 		},
 	];
 
-
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {

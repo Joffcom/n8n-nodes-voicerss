@@ -7,7 +7,7 @@ export class VoiceRSS implements INodeType {
 		icon: 'fa:rss',
 		group: ['transform'],
 		version: 1,
-		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
+		subtitle: '={{$parameter["operation"]}}',
 		description: 'Use the Voice RSS Text-To-Speech API to create an audio stream.',
 		defaults: {
 			name: 'VoiceRSS',
@@ -22,10 +22,10 @@ export class VoiceRSS implements INodeType {
 		],
 		requestDefaults: {
 			baseURL: 'http://api.voicerss.org',
-			headers: {
+			/*headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
-			},
+			},*/
 		},
 		properties: [
 			{
@@ -43,6 +43,17 @@ export class VoiceRSS implements INodeType {
 							request: {
 								method: 'GET',
 								url: '/',
+							},
+							output: {
+								postReceive: [
+									{
+										type: 'binaryData',
+										enabled: true,
+										properties: {
+											destinationProperty: 'data',
+										},
+									},
+								],
 							},
 						},
 					},
@@ -1083,19 +1094,6 @@ export class VoiceRSS implements INodeType {
 							send: {
 								type: 'query',
 								property: 'ssml',
-							},
-						},
-					},
-					{
-						displayName: 'Base64 Encoded',
-						description: 'Whether to output as a Base64 string',
-						name: 'b64',
-						type: 'boolean',
-						default: false,
-						routing: {
-							send: {
-								type: 'query',
-								property: 'b64',
 							},
 						},
 					},
